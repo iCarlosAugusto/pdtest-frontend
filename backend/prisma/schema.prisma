@@ -10,7 +10,7 @@ generator client {
 model Employee {
   id              String @default(uuid()) @id
   name            String
-  estimatedHours  String
+  estimatedHours  Int
   squadId         String
   squad           Squad @relation(fields: [squadId], references: [id])
   reports         Report[]
@@ -28,6 +28,6 @@ model Report {
   description     String
   employee        Employee @relation(fields: [employeeId], references: [id])
   employeeId      String
-  spentHours      String
+  spentHours      Int
   createdAt       DateTime @default(now())
 }

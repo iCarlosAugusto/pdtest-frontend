@@ -12,6 +12,6 @@ export class CreateReportDto {
 
   @IsNotEmpty()
   @IsString()
-  spentHours: string;
+  spentHours: number;
 
 }

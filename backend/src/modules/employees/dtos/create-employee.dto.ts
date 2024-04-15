@@ -5,5 +5,5 @@ export class CreateUserDto {
   name: string;
 
   @IsNotEmpty()
-  estimatedHours: string;
+  estimatedHours: number;
 }
