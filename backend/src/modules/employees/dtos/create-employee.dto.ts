@@ -1,9 +1,14 @@
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CreateUserDto {
-  @IsEmail()
+export class CreateEmployeeDto {
+  @IsString()
   name: string;
 
+  @IsNumber()
   @IsNotEmpty()
   estimatedHours: number;
+
+  @IsString()
+  @IsNotEmpty()
+  squadId: string;
 }

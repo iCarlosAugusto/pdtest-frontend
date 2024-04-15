@@ -1,14 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSquadDto } from './dto/create-squad.dto';
+import { SquadRepository } from 'src/repositories/squad.repository';
 
 @Injectable()
 export class SquadService {
+
+  constructor(private squadRepository: SquadRepository) {}
+
   create(createSquadDto: CreateSquadDto) {
-    return 'This action adds a new squad';
+    return this.squadRepository.create(createSquadDto);
   }
 
   findAll() {
-    return `This action returns all squad`;
+    return this.squadRepository.findAll();
   }
 
   findOne(id: number) {
