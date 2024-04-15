@@ -1,10 +1,22 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateReportDto } from './dto/create-report.dto';
+import { ReportsRepository } from 'src/repositories/reports.repository';
+import { EmployeesRepository } from 'src/repositories/employee.repository';
 
 @Injectable()
 export class ReportsService {
-  create(createReportDto: CreateReportDto) {
-    return 'This action adds a new report';
+
+  constructor(
+    private readonly reportsRepository: ReportsRepository,
+    private readonly employeeRepository: EmployeesRepository
+  ) {}
+
+  async create(data: CreateReportDto) {
+    const employee = await this.employeeRepository.findById(data.employeeId);
+    if(!employee){
+      throw new HttpException('Nenhum funcionário encontrado para o employeeId fornecido', HttpStatus.BAD_REQUEST);
+    }
+    return await this.reportsRepository.create(data);
   }
 
   findAll() {
