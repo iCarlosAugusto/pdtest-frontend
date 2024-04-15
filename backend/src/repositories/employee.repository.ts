@@ -8,7 +8,7 @@ export class EmployeesRepository {
   constructor(private prisma: PrismaService) {}
 
   create(data: CreateEmployeeDto) {
-    return this.prisma.employee.create({data})
+    return this.prisma.employee.create({data: data})
   }
 
   findAll() {

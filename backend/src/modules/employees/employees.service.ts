@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'utils/prisma.service';
+import { EmployeesRepository } from 'src/repositories/employee.repository';
+import { CreateEmployeeDto } from './dtos/create-employee.dto';
 
 @Injectable()
 export class EmployeesService {
 
-  constructor(private prisma: PrismaService) {}
+  constructor(private employeeRepository: EmployeesRepository) {}
 
-  createEmployee() {
-    return this.prisma.squad.create({
-      data: {
-        name: "Squad teste"
-      }
-    })
+  createEmployee(data: CreateEmployeeDto) {
+    return this.employeeRepository.create(data);
+  }
+
+  getAll() {
+    return this.employeeRepository.findAll();
   }
 }
