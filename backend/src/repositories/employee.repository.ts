@@ -20,4 +20,26 @@ export class EmployeesRepository {
       id
     }});
   }
+
+  findTotalEmployeeHours(squadId: string, startDate: string, endData: string) {
+    return this.prisma.squad.findMany({
+      where: {
+        id: squadId,
+      },
+      include: {
+        employees: {
+          include: {
+            reports: {
+              where: {
+                createdAt: {
+                  gte: startDate, //data inicial 2024-04-11T02:57:24.384Z
+                  lte: endData //data final
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+  }
 }

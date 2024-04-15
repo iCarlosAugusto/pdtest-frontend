@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateReportDto {
 
@@ -11,7 +11,7 @@ export class CreateReportDto {
   employeeId: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsNumber()
   spentHours: number;
 
 }

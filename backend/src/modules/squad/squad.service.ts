@@ -1,11 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSquadDto } from './dto/create-squad.dto';
 import { SquadRepository } from 'src/repositories/squad.repository';
+import { EmployeesRepository } from 'src/repositories/employee.repository';
 
 @Injectable()
 export class SquadService {
 
-  constructor(private squadRepository: SquadRepository) {}
+  constructor(
+    private squadRepository: SquadRepository,
+    private employeeRepository: EmployeesRepository 
+  ) {}
 
   create(createSquadDto: CreateSquadDto) {
     return this.squadRepository.create(createSquadDto);
@@ -21,5 +25,9 @@ export class SquadService {
 
   remove(id: number) {
     return `This action removes a #${id} squad`;
+  }
+
+  totalEmployeesHours(squadId: string, startDate: string, endData: string) {
+    return this.employeeRepository.findTotalEmployeeHours(squadId, startDate, endData);
   }
 }

@@ -20,7 +20,7 @@ export class ReportsService {
   }
 
   findAll() {
-    return `This action returns all reports`;
+    return this.reportsRepository.findAll();
   }
 
   findOne(id: number) {

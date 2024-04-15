@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Query } from '@nestjs/common';
 import { SquadService } from './squad.service';
 import { CreateSquadDto } from './dto/create-squad.dto';
 
@@ -20,6 +20,15 @@ export class SquadController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.squadService.findOne(+id);
+  }
+
+  @Get(':id/totalEmployeeHours')
+  findTotalEmployeeHours(
+    @Param('id') id: string,
+    @Query('startDate') startDate: string,
+    @Query('endData') endDate: string
+  ) {
+    return this.squadService.totalEmployeesHours(id, startDate, endDate);
   }
 
   @Delete(':id')
