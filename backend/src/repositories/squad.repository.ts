@@ -14,4 +14,10 @@ export class SquadRepository {
   findAll() {
     return this.prisma.squad.findMany();
   }
+
+  findById(id: string) {
+    return this.prisma.squad.findUnique({where: {
+      id
+    }});
+  }
 }

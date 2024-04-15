@@ -14,4 +14,10 @@ export class ReportsRepository {
   findAll() {
     return this.prisma.report.findMany();
   }
+
+  findById(id: string) {
+    return this.prisma.report.findUnique({where: {
+      id
+    }});
+  }
 }

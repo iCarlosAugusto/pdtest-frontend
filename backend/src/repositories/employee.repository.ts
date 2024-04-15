@@ -14,4 +14,10 @@ export class EmployeesRepository {
   findAll() {
     return this.prisma.employee.findMany();
   }
+
+  findById(id: string) {
+    return this.prisma.employee.findUnique({where: {
+      id
+    }});
+  }
 }
