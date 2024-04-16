@@ -1,0 +1,51 @@
+.main-container {
+
+}
+
+.main-content {
+  display: flex;
+  flex-grow : 1;
+  
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.table-container {
+  padding: 5px;
+  background-color: wheat;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+  margin: auto;
+}
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+th {
+  background-color: #f2f2f2;
+}
+
+.empty-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #dddddd;
+  padding: 20px;
+}

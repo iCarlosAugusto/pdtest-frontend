@@ -1,0 +1,14 @@
+.button {
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Cor do texto branca */
+    border: none; /* Remover borda */
+    border-radius: 6px; /* Cantos arredondados */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor ao passar por cima */
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+  }
+
+  .button:hover {
+    background-color: #0056b3; /* Cor de fundo azul mais escura ao passar o mouse */
+  }
