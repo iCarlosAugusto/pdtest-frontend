@@ -18,17 +18,35 @@ export class SquadController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.squadService.findOne(+id);
+  findById(@Param('id') id: string) {
+    return this.squadService.findById(id);
   }
 
   @Get(':id/totalEmployeeHours')
   findTotalEmployeeHours(
     @Param('id') id: string,
     @Query('startDate') startDate: string,
-    @Query('endData') endDate: string
+    @Query('endDate') endDate: string
   ) {
     return this.squadService.totalEmployeesHours(id, startDate, endDate);
+  }
+
+  @Get(':id/totalSquadHours')
+  findTotalSquadHours(
+    @Param('id') id: string,
+    @Query('startDate') startDate: string,
+    @Query('endDate') endDate: string
+  ) {
+    return this.squadService.totalSquadHours(id, startDate, endDate);
+  }
+
+  @Get(':id/mediaSquadHours')
+  findMediaSquadHours(
+    @Param('id') id: string,
+    @Query('startDate') startDate: string,
+    @Query('endDate') endDate: string
+  ) {
+    return this.squadService.mediaSquadHours(id, startDate, endDate);
   }
 
   @Delete(':id')
