@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { SquadPage } from './pages/squads/squads.page.tsx'
 import { UsersPage } from './pages/users/users.page.tsx'
+import { SquadDetails } from './pages/squadDetails/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/users",
     element: <UsersPage/>
+  },
+  {
+    path: "/squad/:squadId",
+    element: <SquadDetails/>
   }
 ]);
 

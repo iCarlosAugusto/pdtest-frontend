@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef, useState } from "react";
-import "./style.css";
 import axiosRequest from "../../../utils/axios";
+import "./style.css";
 
 interface ModalType {
   children?: ReactNode;
@@ -9,19 +9,26 @@ interface ModalType {
   didCreated: () => void;
 }
 
-export default function Modal(props: ModalType) {
+function RegisterHourModal(props: ModalType) {
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const idEmployeeRef = useRef<HTMLInputElement>(null);
+  const spentHoursRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLInputElement>(null);
+  
   const [isLoading, setIsLoading] = useState(false);
 
   const createSquad = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const inputValue = inputRef.current?.value;
-    if(inputRef) {
+    const employeeId = idEmployeeRef.current?.value;
+    const spentHours = spentHoursRef.current?.value;
+    const description = descriptionRef.current?.value;
+    if(employeeId && spentHours && description) {
         try {
             setIsLoading(true);
-            await axiosRequest.post("/squad", {
-                name: inputValue
+            await axiosRequest.post("/reports", {
+                employeeId,
+                spentHours: Number(spentHours),
+                description
             });
             props.didCreated();
             props.toggle();
@@ -40,12 +47,14 @@ export default function Modal(props: ModalType) {
       {props.isOpen && (
         <div className="modal-overlay" onClick={props.toggle}>
           <div onClick={(e) => e.stopPropagation()} className="modal-box">
-            <span>Criar Squad</span>
+            <span>Criar lançamento</span>
             <form onSubmit={createSquad}>
-                <input ref={inputRef} required/>
+                <input ref={idEmployeeRef} required placeholder="Id do usuário"/>
+                <input ref={spentHoursRef} required placeholder="Horas gastas"/>
+                <input ref={descriptionRef} required placeholder="Descrição"/>
             
                 <button type="submit">
-                    Criar Squad
+                    Criar usuário
                 </button>
             </form>
           </div>
@@ -54,3 +63,5 @@ export default function Modal(props: ModalType) {
     </>
   );
 }
+
+export { RegisterHourModal }

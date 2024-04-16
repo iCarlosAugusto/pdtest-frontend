@@ -4,10 +4,14 @@ import { Button } from '../../components/button/button';
 import Modal from '../../components/modals/squad/squad';
 import "./squads.style.css";
 import { Header } from '../../components/header/header';
+import { useNavigate } from 'react-router-dom';
+
 
 function SquadPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [squads, setSquads] = useState<Squad[]>([]);
+  const navigate = useNavigate();
+
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -59,7 +63,7 @@ function SquadPage() {
                       <td>{el.id}</td>
                       <td>{el.name}</td>
                       <td>
-                        <Button label='Ver squad' onClick={() => console.log("click!")}/>
+                        <Button label='Ver squad' onClick={() => navigate(`/squad/${el.id}`)}/>
                       </td>
                     </tr>
                   ))
