@@ -20,3 +20,12 @@
   padding: 1rem;
   border-radius: 1rem;
 }
+
+.fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  margin-bottom: 16px;
+}

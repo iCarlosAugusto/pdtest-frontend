@@ -31,9 +31,9 @@ function UsersPage() {
         <>
         <Header/>
         <CreateEmployeeModal
-            isOpen={isModalOpen}
-            toggle={toggleModal}
-            didCreated={getUsers}
+          isOpen={isModalOpen}
+          toggle={toggleModal}
+          didCreated={getUsers}
         />
 
         {employees.length === 0 ? (

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { Button } from "../button/button"
 import { useState } from "react";
 import { RegisterHourModal } from "../modals/registerHourModal";
+import "./style.css";
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,7 +11,8 @@ const Header = () => {
       setIsModalOpen(!isModalOpen);
     }
     return (    
-        <div style={{marginBottom: 20}}>
+        <div className="container">
+            
             <RegisterHourModal
                 isOpen={isModalOpen}
                 didCreated={() => console.log("e")}
@@ -22,7 +24,7 @@ const Header = () => {
             </header>
 
             <div className='options'>
-                <Link to="/">Squad</Link>
+                <Link to="/" style={{marginRight: 16}}>Squad</Link>
                 <Link to="/users">Usuários</Link>
             </div>
         </div>

@@ -20,4 +20,26 @@
     padding: 1rem;
     border-radius: 1rem;
   }
+
+.fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+.error-container {
+    padding: 16px;
+    background-color: red;
+    border-radius: 16px;
+
+}
+
+.error-message {
+    font-weight: 800;
+    color: white;
+}
+  
   

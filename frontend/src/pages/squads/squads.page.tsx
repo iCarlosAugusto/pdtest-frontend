@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import axiosRequest from '../../utils/axios';
 import { Button } from '../../components/button/button';
-import Modal from '../../components/modals/squad/squad';
 import "./squads.style.css";
 import { Header } from '../../components/header/header';
 import { useNavigate } from 'react-router-dom';
+import { CreateSquadModal } from '../../components/modals/squad/squad';
 
 
 function SquadPage() {
@@ -35,7 +35,7 @@ function SquadPage() {
       <Header/>
 
       <main className='main-content'>
-        <Modal
+        <CreateSquadModal
           isOpen={isModalOpen}
           toggle={toggleModal}
           didCreated={getSquads}
