@@ -36,11 +36,12 @@ export class SquadService {
 
 
     return squadData.employees.map((el, index )=> {
+      const spentHours = el.reports?.reduce((total, item) => total + item.spentHours, 0);
       return {
         "employeeId": el.id,
         "employeeName": el.name,
         "description": el.reports?.pop()?.description ?? null,
-        "spentHours": el.reports.reduce((total, item) => total + item.spentHours, 0),
+        "spentHours": spentHours,
         "createdAt": el.reports?.pop()?.createdAt ?? null,
       };
     });

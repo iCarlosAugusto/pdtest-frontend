@@ -22,4 +22,8 @@ export class EmployeesService {
   getAll() {
     return this.employeeRepository.findAll();
   }
+
+  getById(id: string) {
+    return this.employeeRepository.findById(id);
+  }
 }
