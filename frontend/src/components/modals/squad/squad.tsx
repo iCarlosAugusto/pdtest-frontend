@@ -1,8 +1,6 @@
 import React, { ReactNode, useRef } from "react";
 import "./style.css";
 import axiosRequest from "../../../utils/axios";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 
 interface ModalType {
   children?: ReactNode;
@@ -24,7 +22,6 @@ function CreateSquadModal(props: ModalType) {
           name: inputValue
         });
         props.didCreated();
-        toast("Squad criado com sucesso!")
         props.toggle();
       } catch (error) {
         //[TO-DO] criar alert de erro
@@ -34,7 +31,6 @@ function CreateSquadModal(props: ModalType) {
 
   return (
     <>
-      <ToastContainer/>
       {props.isOpen && (
         <div className="modal-overlay" onClick={props.toggle}>
           <div onClick={(e) => e.stopPropagation()} className="modal-box">

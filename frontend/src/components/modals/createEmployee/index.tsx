@@ -1,8 +1,7 @@
 import React, { ReactNode, useRef, useState } from "react";
 import axiosRequest from "../../../utils/axios";
 import "./style.css";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+
 
 interface ModalType {
   children?: ReactNode;
@@ -51,7 +50,6 @@ function CreateEmployeeModal(props: ModalType) {
         });
         props.didCreated();
         props.toggle();
-        toast("Funcionário criado com sucesso!")
       } catch (error) {
           //[TO-DO] criar alert de erro
       }
@@ -65,7 +63,6 @@ function CreateEmployeeModal(props: ModalType) {
   
   return (
     <>
-      <ToastContainer/>
       {props.isOpen && (
         <div className="modal-overlay" onClick={closeModal}>
           <div onClick={(e) => e.stopPropagation()} className="modal-box">
