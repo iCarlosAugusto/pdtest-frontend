@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useState } from "react";
+import React, { ReactNode, useRef } from "react";
 import "./style.css";
 import axiosRequest from "../../../utils/axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,25 +14,20 @@ interface ModalType {
 function CreateSquadModal(props: ModalType) {
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const createSquad = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const inputValue = inputRef.current?.value;
     if(inputRef) {
       try {
-        setIsLoading(true);
         await axiosRequest.post("/squad", {
           name: inputValue
         });
         props.didCreated();
         toast("Squad criado com sucesso!")
         props.toggle();
-        setIsLoading(false);
       } catch (error) {
         //[TO-DO] criar alert de erro
-      } finally {
-        setIsLoading(false);
       }
     }
   }

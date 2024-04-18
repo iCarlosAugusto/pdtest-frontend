@@ -17,7 +17,6 @@ function CreateEmployeeModal(props: ModalType) {
   const estimatedHoursRef = useRef<HTMLInputElement>(null);
   const squadIdRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string|null>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const validate = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,7 +44,6 @@ function CreateEmployeeModal(props: ModalType) {
     const squadId = squadIdRef.current?.value;
     if(name && estimatedHours && squadId) {
       try {
-        setIsLoading(true);
         await axiosRequest.post("/employees", {
           name,
           estimatedHours: Number(estimatedHours),
@@ -54,11 +52,8 @@ function CreateEmployeeModal(props: ModalType) {
         props.didCreated();
         props.toggle();
         toast("Funcionário criado com sucesso!")
-        setIsLoading(false);
       } catch (error) {
           //[TO-DO] criar alert de erro
-      } finally {
-        setIsLoading(false);
       }
     }
   }

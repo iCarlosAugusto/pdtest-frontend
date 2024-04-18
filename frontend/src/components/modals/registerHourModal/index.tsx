@@ -17,8 +17,6 @@ function RegisterHourModal(props: ModalType) {
   const spentHoursRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string|null>(null);
-  
-  const [isLoading, setIsLoading] = useState(false);
 
   const validate = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,7 +36,6 @@ function RegisterHourModal(props: ModalType) {
     const description = descriptionRef.current?.value;
     if(employeeId && spentHours && description) {
       try {
-        setIsLoading(true);
         await axiosRequest.post("/reports", {
           employeeId,
           spentHours: Number(spentHours),
@@ -47,11 +44,8 @@ function RegisterHourModal(props: ModalType) {
         props.didCreated();
         props.toggle();
         toast("Criado com sucesso!")
-        setIsLoading(false);
       } catch (error) {
             //[TO-DO] criar alert de erro
-      } finally {
-        setIsLoading(false);
       }
     }
   }
